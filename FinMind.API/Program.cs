@@ -14,11 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add<ApiExceptionFilterAttribute>();
-})
-.AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+builder.Services.AddControllers(options => { options.Filters.Add<ApiExceptionFilterAttribute>(); })
+    .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -47,7 +44,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<FinMindDbContext>();
-     DefaultUserSeeder.SeedData(context);
+    context.Database.Migrate();
+    DefaultUserSeeder.SeedData(context);
 }
 
 // Configure the HTTP request pipeline.

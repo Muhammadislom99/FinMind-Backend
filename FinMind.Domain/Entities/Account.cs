@@ -7,7 +7,7 @@ public class Account : BaseEntityWithNameDescription
 {
     public AccountType Type { get; set; }
     public decimal Balance { get; set; }
-    public string Currency { get; set; } = "TJK";
+    public string Currency { get; set; } = "TJS";
     public bool IsActive { get; set; } = true;
 
     public bool CheckingAccount { get; set; }

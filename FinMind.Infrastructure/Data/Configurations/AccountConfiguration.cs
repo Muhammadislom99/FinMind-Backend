@@ -11,7 +11,7 @@ public class AccountConfiguration : BaseEntityConfiguration<Account>
         builder.Property(a => a.Currency)
             .IsRequired()
             .HasMaxLength(3)
-            .HasDefaultValue("TJK");
+            .HasDefaultValue("TJS");
 
         builder.Property(a => a.IsActive)
             .IsRequired()

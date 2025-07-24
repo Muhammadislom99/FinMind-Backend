@@ -49,11 +49,6 @@ namespace FinMind.API.Controllers
         {
             return Ok(await mediator.Send(query));
         }
-
-        [HttpGet("GetTransactionsByAccount/{accountId:guid}")]
-        public async Task<IActionResult> GetTransactions([FromRoute] Guid accountId)
-        {
-            return Ok(await mediator.Send(new GetTransactionsByAccountQuery() { AccountId = accountId }));
-        }
+        
     }
 }

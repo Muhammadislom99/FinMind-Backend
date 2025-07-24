@@ -1,0 +1,56 @@
+# Общие файлы IDE и ОС
+.DS_Store
+.idea/
+*.user
+*.suo
+*.vscode/
+
+# Бинарные файлы и зависимости
+bin/
+obj/
+packages/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Файлы сборки и настройки
+.vs/
+*.swp
+*.sln.cache
+*.userprefs
+*.lock.json
+
+# Логи и временные файлы
+logs/
+*.log
+*.tmp
+
+# Тестовые покрытия и результаты
+coverage/
+TestResults/
+
+# Файлы окружения и секреты
+.env
+*.env.local
+appsettings.Development.json
+secrets.json
+
+# NuGet пакеты
+*.nupkg
+
+# Docker-специфичные файлы
+docker-compose.override.yml
+**/.dockerignore
+**/.env
+/FimMind.Application/bin/
+/FinMind.API/bin/
+/FinMind.API/obj/
+/FimMind.Application/obj/
+/FinMind.Application.Contract/bin/
+/FinMind.Application.Contract/obj/
+/FinMind.Domain/bin/
+/FinMind.Domain/obj/
+/FinMind.Infrastructure/bin/
+/FinMind.Infrastructure/obj/
+/FinMind.API/bin/Debug/

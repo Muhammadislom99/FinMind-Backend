@@ -1,7 +1,5 @@
-using FinMind.Application.Contract.Enums;
 using FinMind.Application.Contract.Loans.Commands;
 using FinMind.Application.Contract.Loans.Queries;
-using FinMind.Application.Contract.Transactions.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinMind.API.Controllers

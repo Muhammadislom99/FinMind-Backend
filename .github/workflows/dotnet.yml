@@ -1,28 +1,36 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+name: .NET CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master", "main"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master", "main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Собираем библиотеку Application.Contracts под .NET 8 (если она есть)
+      - name: Build Application.Contracts (net8.0)
+        run: dotnet build src/Application.Contracts/Application.Contracts.csproj --framework net8.0 --no-restore
+        if: exists('src/Application.Contracts/Application.Contracts.csproj')
+
+      # Собираем основной проект под .NET 9
+      - name: Build Main Project (net9.0)
+        run: dotnet build --no-restore --framework net9.0
+
+      # Запускаем тесты (под той версией, которая указана в их .csproj)
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal

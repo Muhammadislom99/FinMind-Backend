@@ -18,5 +18,4 @@ public class Category : BaseEntity
     
     public Guid AccountId { get; set; }
     public virtual Account Account { get; set; }
-   
 }

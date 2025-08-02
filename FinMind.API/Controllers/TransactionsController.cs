@@ -3,6 +3,7 @@ using FinMind.Application.Contract.Transactions.Expenses.Commands;
 using FinMind.Application.Contract.Transactions.Incomes.Commands;
 using FinMind.Application.Contract.Transactions.Queries;
 using FinMind.Application.Contract.Transactions.Repayments.Commands;
+using FinMind.Application.Contract.Transactions.Responses;
 using FinMind.Application.Contract.Transactions.Tags.Commands;
 using FinMind.Application.Contract.Transactions.Transfer.Commands;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,12 @@ namespace FinMind.API.Controllers
         {
             return Ok(await mediator.Send(query));
         }
-        
+
+        [HttpGet("GetAllTransactions2")]
+        public async Task<ActionResult<List<TransactionResponse>>> GetAllTransactions2(
+            [FromQuery] GetTransactionsQuery query)
+        {
+            return Ok(await mediator.Send(query));
+        }
     }
 }

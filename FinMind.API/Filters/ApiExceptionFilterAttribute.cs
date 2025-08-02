@@ -13,11 +13,27 @@ public class ApiExceptionFilterAttribute(ILogger<ApiExceptionFilterAttribute> lo
             { Exception: NotFoundException } => HandleNotFoundException(context),
             { Exception: ExistException } => HandleExistException(context),
             { Exception: ValidationException } => HandleValidationException(context),
-            {Exception: TransactionsException} => HandleBadRequestExeption(context),
+            { Exception: TransactionsException } => HandleBadRequestExeption(context),
+            { Exception: HierarchyException } => HandleHierarchyException(context),
             _ => HandleUnknownException(context)
         };
         base.OnException(context);
     }
+
+    private bool HandleHierarchyException(ExceptionContext context)
+    {
+        var exception = context.Exception;
+        var details = new ProblemDetails
+        {
+            Status = StatusCodes.Status400BadRequest,
+            Type = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1",
+            Title = "Invalid category hierarchy",
+            Detail = exception.Message
+        };
+        context.Result = new ObjectResult(details);
+        return true;
+    }
+
 
     private bool HandleBadRequestExeption(ExceptionContext context)
     {

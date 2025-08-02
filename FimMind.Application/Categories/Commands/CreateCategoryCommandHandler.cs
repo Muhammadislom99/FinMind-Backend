@@ -24,6 +24,9 @@ public class CreateCategoryCommandHandler(IApplicationDbContext dbContext)
                 var parent = await dbContext.Categories
                     .FirstOrDefaultAsync(c => c.Id == request.ParentCategoryId, cancellationToken);
                 if (parent == null) throw new NotFoundException("Parent category not found.");
+                if (parent.ParentCategoryId.HasValue)
+                    throw new HierarchyException(
+                        "Category hierarchy is limited to one level. You cannot add a subcategory to another subcategory.");
             }
 
             var account = new Account()

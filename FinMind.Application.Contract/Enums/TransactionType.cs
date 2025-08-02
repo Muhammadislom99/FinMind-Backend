@@ -7,4 +7,5 @@ public enum TransactionType
     Transfer ,//Между счетами
     Repayment, //Погашение
     Saving, // Накопление
+    DebtPayment
 }

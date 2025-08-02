@@ -1,4 +1,3 @@
-using FinMind.Application.Contract.Enums;
 using FinMind.Application.Contract.Transactions.Expenses.Commands;
 using FinMind.Application.Contract.Transactions.Incomes.Commands;
 using FinMind.Application.Contract.Transactions.Queries;

@@ -1,6 +1,5 @@
 using FinMind.Application.Contract.Accounts.Commands;
 using FinMind.Application.Contract.Accounts.Queries;
-using FinMind.Application.Contract.Transactions.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinMind.API.Controllers

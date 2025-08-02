@@ -1,4 +1,5 @@
-﻿using FinMind.Domain.Enums;
+﻿#nullable enable
+using FinMind.Domain.Enums;
 
 namespace FinMind.Domain.Entities;
 

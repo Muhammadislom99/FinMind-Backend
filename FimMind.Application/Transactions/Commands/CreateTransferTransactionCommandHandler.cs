@@ -57,7 +57,7 @@ public class CreateTransferTransactionCommandHandler(IApplicationDbContext dbCon
 
             return $"Transfer of {request.Amount:N2}{fromAccount.Currency} completed successfully.";
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             await transaction.RollbackAsync(cancellationToken);
             throw;

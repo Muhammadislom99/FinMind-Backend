@@ -64,7 +64,7 @@ public class CreateRepaymentTransactionCommandHandler(IApplicationDbContext dbCo
 
             return $"Loan partially paid off in the amount of {amount:N2}{account.Currency}.";
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transact.RollbackAsync(cancellationToken);
             throw;

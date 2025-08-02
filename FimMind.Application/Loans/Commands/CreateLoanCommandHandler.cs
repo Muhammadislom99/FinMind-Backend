@@ -50,7 +50,7 @@ public class CreateLoanCommandHandler(IApplicationDbContext dbContext, IMapper m
 
             return mapper.Map<LoanResponse>(loan);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transact.RollbackAsync(cancellationToken);
             throw;

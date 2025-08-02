@@ -1,4 +1,5 @@
-﻿using FinMind.Application.Contract.Enums;
+﻿#nullable enable
+using FinMind.Application.Contract.Enums;
 
 namespace FinMind.Application.Contract.Categories.Commands;
 

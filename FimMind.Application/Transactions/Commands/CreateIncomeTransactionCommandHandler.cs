@@ -54,7 +54,7 @@ public class CreateIncomeTransactionCommandHandler(IApplicationDbContext dbConte
             return $"Income of {request.Amount:N2}{account.Currency} recorded successfully.";
             ;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transact.RollbackAsync(cancellationToken);
             throw;

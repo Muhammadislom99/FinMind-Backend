@@ -47,7 +47,7 @@ public class CreateExpenseTransactionCommandHandler(IApplicationDbContext dbCont
             await transact.CommitAsync(cancellationToken);
             return $"Expense of {request.Amount:N2}{account.Currency} recorded successfully.";
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await transact.RollbackAsync(cancellationToken);
             throw;
